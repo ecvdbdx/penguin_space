@@ -1,5 +1,5 @@
 # Space
 
-View Solar System data.
+Explore the Solar System.
 
 — Clémentine Besacier & Maël Querré
