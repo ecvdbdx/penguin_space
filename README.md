@@ -1,2 +1,5 @@
-# penguin_space
-Clémentine Besacier &amp; Maël Querré
+# Space
+
+View Solar System data.
+
+— Clémentine Besacier & Maël Querré
