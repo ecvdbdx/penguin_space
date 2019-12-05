@@ -2,13 +2,15 @@ import './index.css'
 
 import React from 'react'
 import PlanetsList from './components/PlanetsList'
+import PlanetView from './components/PlanetView'
 
 class App extends React.Component {
   constructor() {
     super()
 
     this.state = {
-      planets: []
+      planets: [],
+      planet: {}
     }
   }
 
@@ -18,12 +20,15 @@ class App extends React.Component {
       .then(data => this.setState({
         planets: data.bodies
       }))
+    fetch('https://api.le-systeme-solaire.net/rest/bodies/mercure')
+      .then(data => data.json())
+      .then(data => this.setState({
+        planet: data
+      }))
   }
 
   render() {
-    return (
-      <PlanetsList planets={this.state.planets} />
-    )
+    return Object.entries(this.state.planet).length > 0 ? <PlanetView planet={this.state.planet} /> : <div></div>
   }
 }
 

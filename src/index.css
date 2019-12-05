@@ -7933,6 +7933,10 @@ video {
   font-size: 4rem;
 }
 
+.text-7xl {
+  font-size: 5rem;
+}
+
 .italic {
   font-style: italic;
 }
@@ -15668,6 +15672,10 @@ body {
     font-size: 4rem;
   }
 
+  .sm\:text-7xl {
+    font-size: 5rem;
+  }
+
   .sm\:italic {
     font-style: italic;
   }
@@ -23396,6 +23404,10 @@ body {
 
   .md\:text-6xl {
     font-size: 4rem;
+  }
+
+  .md\:text-7xl {
+    font-size: 5rem;
   }
 
   .md\:italic {
@@ -31128,6 +31140,10 @@ body {
     font-size: 4rem;
   }
 
+  .lg\:text-7xl {
+    font-size: 5rem;
+  }
+
   .lg\:italic {
     font-style: italic;
   }
@@ -38856,6 +38872,10 @@ body {
 
   .xl\:text-6xl {
     font-size: 4rem;
+  }
+
+  .xl\:text-7xl {
+    font-size: 5rem;
   }
 
   .xl\:italic {
