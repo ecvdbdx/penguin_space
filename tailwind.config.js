@@ -3,7 +3,11 @@ module.exports = {
     fontFamily: {
       body: ['Inter', 'system-ui', 'sans-serif']
     },
-    extend: {}
+    extend: {
+      fontSize: {
+        '7xl': '5rem',
+      }
+    }
   },
   variants: {},
   plugins: []
