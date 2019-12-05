@@ -1,3 +1,5 @@
+import './index.css'
+
 import React from 'react'
 import PlanetsList from './components/PlanetsList'
 
@@ -6,23 +8,21 @@ class App extends React.Component {
     super()
 
     this.state = {
-      bodies: [],
       planets: []
     }
   }
 
   componentDidMount() {
-    fetch('https://api.le-systeme-solaire.net/rest/bodies/')
+    fetch('https://api.le-systeme-solaire.net/rest/bodies?filter[]=isPlanet,neq,0')
       .then(data => data.json())
       .then(data => this.setState({
-        bodies: data.bodies,
-        planets: data.bodies.filter(body => body.isPlanet)
+        planets: data.bodies
       }))
   }
 
   render() {
     return (
-      <PlanetsList bodies={this.state.planets} />
+      <PlanetsList planets={this.state.planets} />
     )
   }
 }
