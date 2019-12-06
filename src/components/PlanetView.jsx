@@ -39,7 +39,7 @@ export default function PlanetView(props) {
         </table>
       </div>
       <div className="w-2/3">
-        <img className="w-8/12 ml-auto" src="./img/mercure.png" alt="mercure" />
+        <img className="w-8/12 ml-auto" src="./img/mercury.png" alt="mercure" />
       </div>
     </div>
   )
