@@ -1,14 +1,11 @@
 import React from 'react'
-import { directive } from '@babel/types'
 
 export default function PlanetView(props) {
-  console.log(props)
   return (
-    <div className="flex">
-      <div className="w-1/3">
-        <h2 className="font-semibold text-7xl mb-4">Mercury</h2>
-        <p className="mb-16">Mercury is the closest planet to the sun and the eighth largest. It has a diameter of 4,880 kilometers. Mercury has the widest temperature extremes in the solar system ranging from 90 degrees Kelvin to 700 degrees Kelvin. Mercury has a thick iron core and a thinner outer crust of rocky material.
-        </p>
+    <div className="flex pl-16 pt-12 flex-grow">
+      <div className="w-1/3 flex-shrink-0">
+        <h2 className="font-semibold text-7xl mb-4">{props.planet.englishName}</h2>
+
         <table className="border-collapse">
           <tbody>
             <tr>
@@ -38,8 +35,8 @@ export default function PlanetView(props) {
           </tbody>
         </table>
       </div>
-      <div className="w-2/3">
-        <img className="w-8/12 ml-auto" src="./img/mercury.png" alt="mercure" />
+      <div className="w-2/3 flex-shrink-0">
+        <img className="w-8/12 ml-auto mt-8" src={`img/${props.planet.englishName.toLowerCase()}.png`} alt="mercure" />
       </div>
     </div>
   )

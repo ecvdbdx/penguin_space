@@ -14,20 +14,31 @@ class App extends React.Component {
       currentPlanetId: ''
     }
 
+    this.isPlanet = this.isPlanet.bind(this)
     this.currentPlanet = this.currentPlanet.bind(this)
+    this.setCurrentPlanetId = this.setCurrentPlanetId.bind(this)
+  }
+
+  isPlanet(planet) {
+    const planets = ['mercure', 'venus', 'terre', 'mars', 'jupiter', 'saturne', 'uranus', 'neptune', 'pluton']
+    return planets.includes(planet.id)
   }
 
   currentPlanet() {
-    return this.state.planets.filter(planet => planet.id === this.state.currentPlanetId)
+    return this.state.planets.find(planet => planet.id === this.state.currentPlanetId)
   }
 
-  setCurrentPlanet(planetId) {
+  setCurrentPlanetId(planetId) {
     this.setState({ currentPlanetId: planetId })
   }
 
-  componentDidMount() {
+  componentWillMount() {
     axios.get('https://api.le-systeme-solaire.net/rest/bodies?filter[]=isPlanet,neq,0')
-      .then(result => this.setState({ planets: result.data.bodies }))
+      .then(result => {
+        this.setState({
+          planets: result.data.bodies.filter(this.isPlanet)
+        })
+      })
   }
 
   renderPlanetView() {
@@ -35,11 +46,11 @@ class App extends React.Component {
   }
 
   render() {
-    return <>
+    return <div className="flex">
       <PlanetsList planets={this.state.planets}
-                   setCurrentPlanetId={planetId => this.setCurrentPlanetId(planetId)} />
+                   setCurrentPlanetId={this.setCurrentPlanetId}/>
       {this.renderPlanetView()}
-    </>
+    </div>
   }
 }
 
