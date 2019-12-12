@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function PlanetsList(props) {
   return (
-    <div className="flex flex-col items-center flex-shrink-0 py-8 px-4">
+    <div className="flex flex-col items-center justify-around flex-shrink-0 h-screen overflow-auto p-4">
       {props.planets.map((planet, index) => {
         return <div key={index}
                     onClick={() => props.setCurrentPlanetId(planet.id)}

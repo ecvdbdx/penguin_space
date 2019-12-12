@@ -32,6 +32,10 @@ export default function PlanetView(props) {
               <th className="font-semibold text-left pr-8">Mean radius</th>
               <td className="py-1">{props.planet.meanRadius} km</td>
             </tr>
+            <tr>
+              <th className="font-semibold text-left pr-8">Semi-major axis</th>
+              <td className="py-1">{props.planet.semimajorAxis} km</td>
+            </tr>
           </tbody>
         </table>
       </div>
