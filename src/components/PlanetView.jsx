@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function PlanetView(props) {
   return (
-    <div className="flex pl-16 pt-12 flex-grow">
+    <div className="flex pt-12 pl-16 pr-8 flex-grow">
       <div className="w-1/3 flex-shrink-0">
         <h2 className="font-semibold text-7xl mb-4">{props.planet.englishName}</h2>
 
@@ -40,7 +40,9 @@ export default function PlanetView(props) {
         </table>
       </div>
       <div className="w-2/3 flex-shrink-0">
-        <img className="w-8/12 ml-auto mt-8" src={`img/${props.planet.englishName.toLowerCase()}.png`} alt="mercure" />
+        <img className="w-8/12 ml-auto mt-8"
+             src={`img/${props.planet.englishName.toLowerCase()}.png`}
+             alt={props.planet.englishName} />
       </div>
     </div>
   )
