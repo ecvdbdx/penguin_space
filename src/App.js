@@ -32,7 +32,7 @@ class App extends React.Component {
     this.setState({ currentPlanetId: planetId })
   }
 
-  componentWillMount() {
+  componentDidMount() {
     axios.get('https://api.le-systeme-solaire.net/rest/bodies?filter[]=isPlanet,neq,0')
       .then(result => {
         this.setState({

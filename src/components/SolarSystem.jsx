@@ -4,40 +4,41 @@ class SolarSystem extends React.Component {
   constructor(props) {
     super(props)
 
-    this.mercure = {}
-    this.venus = {}
-    this.terre = {}
-    this.mars = {}
-    this.jupiter = {}
-    this.saturne = {}
-    this.uranus = {}
-    this.neptune = {}
-    this.pluton = {}
+    this.state = {
+      orbitsRefs: {}
+    }
+
+    this.maxSemimajorAxis = this.maxSemimajorAxis.bind(this)
+  }
+
+  maxSemimajorAxis() {
+    return Math.max(...this.props.planets.map(planet => planet.semimajorAxis))
   }
 
   render() {
-    const maxSemimajorAxis = Math.max(...this.props.planets.map(planet => planet.semimajorAxis))
     return (
       <div className="w-120 h-120 relative">
         {this.props.planets.map((planet, index) => {
-          return <div key={index}
-                      ref={element => this[planet.id] = element}
-                      className="absolute border border-solid border-white rounded-full"
-                      style={{
-                        width: `${100 * planet.semimajorAxis / maxSemimajorAxis}%`,
-                        height: `${100 * planet.semimajorAxis / maxSemimajorAxis}%`,
-                        top: "50%",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)"
-                      }}>
-            <div className="w-2 h-2 bg-red-600"
+          const planetAngle = 45 // in degrees
+          const planetOrbitDistance = 50 * planet.semimajorAxis / this.maxSemimajorAxis()
+          return (
+            <div key={index}
+                 className="absolute border border-solid border-white rounded-full"
                  style={{
-                   backgroundColor: this[planet.id].current && 'green',
-                   top: this[planet.id] && this[planet.id].current && (this[planet.id].current.offsetHeight / 2 + this[planet.id].current.offsetHeight * Math.cos(1)),
-                   left: this[planet.id] && this[planet.id].current && (this[planet.id].current.offsetWidth / 2 + this[planet.id].current.offsetWidth * Math.sin(1)),
+                   width: `${planetOrbitDistance * 2}%`,
+                   height: `${planetOrbitDistance * 2}%`,
+                   top: "50%",
+                   left: "50%",
                    transform: "translate(-50%, -50%)"
-                 }} />
-          </div>
+                 }}>
+              <div className="absolute w-2 h-2 bg-red-600 rounded-full"
+                   style={{
+                     top: `${50 - 50 * Math.sin(planetAngle * (Math.PI / 180))}%`,
+                     left: `${50 + 50 * Math.cos(planetAngle * (Math.PI / 180))}%`,
+                     transform: "translate(-50%, -50%)"
+                   }} />
+            </div>
+          )
         })}
       </div>
     )

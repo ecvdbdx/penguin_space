@@ -1,14 +1,16 @@
 import React from 'react'
+import { ChevronLeft } from 'react-feather'
 
 export default function PlanetView(props) {
   return (
     <div className="flex-grow pt-12 pl-16 pr-8">
-      <button onClick={props.homepage}>
-        Back
+      <button onClick={props.homepage}
+              className="flex items-center mb-8 focus:outline-none">
+        <ChevronLeft className="inline-block mr-1" size={21} /> Back
       </button>
       <div className="flex">
         <div className="flex-grow flex-shrink-0">
-          <h2 className="font-semibold text-7xl tracking-tighter mb-4">{props.planet.englishName}</h2>
+          <h2 className="font-semibold text-7xl tracking-tighter leading-none mb-6">{props.planet.englishName}</h2>
 
           <table className="border-collapse">
             <tbody>
