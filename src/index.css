@@ -582,6 +582,12 @@ video {
   height: auto;
 }
 
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  color: #fff;
+  background-color: #000;
+}
+
 .container {
   width: 100%;
 }
@@ -608,6 +614,10 @@ video {
   .container {
     max-width: 1280px;
   }
+}
+
+.planet-preview-image {
+  max-height: 32rem;
 }
 
 .sr-only {
@@ -8340,12 +8350,6 @@ video {
 
 .z-auto {
   z-index: auto;
-}
-
-body {
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-  color: #fff;
-  background-color: #000;
 }
 
 @media (min-width: 640px) {
