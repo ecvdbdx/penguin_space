@@ -1,7 +1,13 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 body {
   @apply font-body text-white bg-black;
 }
+
+@tailwind components;
+
+.planet-preview-image {
+  max-height: 32rem;
+}
+
+@tailwind utilities;
