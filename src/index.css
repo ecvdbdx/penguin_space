@@ -3782,6 +3782,10 @@ body {
   height: 16rem;
 }
 
+.h-120 {
+  height: 30rem;
+}
+
 .h-auto {
   height: auto;
 }
@@ -8204,6 +8208,10 @@ body {
   width: 16rem;
 }
 
+.w-120 {
+  width: 30rem;
+}
+
 .w-auto {
   width: auto;
 }
@@ -11513,6 +11521,10 @@ body {
 
   .sm\:h-64 {
     height: 16rem;
+  }
+
+  .sm\:h-120 {
+    height: 30rem;
   }
 
   .sm\:h-auto {
@@ -15937,6 +15949,10 @@ body {
     width: 16rem;
   }
 
+  .sm\:w-120 {
+    width: 30rem;
+  }
+
   .sm\:w-auto {
     width: auto;
   }
@@ -19247,6 +19263,10 @@ body {
 
   .md\:h-64 {
     height: 16rem;
+  }
+
+  .md\:h-120 {
+    height: 30rem;
   }
 
   .md\:h-auto {
@@ -23671,6 +23691,10 @@ body {
     width: 16rem;
   }
 
+  .md\:w-120 {
+    width: 30rem;
+  }
+
   .md\:w-auto {
     width: auto;
   }
@@ -26981,6 +27005,10 @@ body {
 
   .lg\:h-64 {
     height: 16rem;
+  }
+
+  .lg\:h-120 {
+    height: 30rem;
   }
 
   .lg\:h-auto {
@@ -31405,6 +31433,10 @@ body {
     width: 16rem;
   }
 
+  .lg\:w-120 {
+    width: 30rem;
+  }
+
   .lg\:w-auto {
     width: auto;
   }
@@ -34715,6 +34747,10 @@ body {
 
   .xl\:h-64 {
     height: 16rem;
+  }
+
+  .xl\:h-120 {
+    height: 30rem;
   }
 
   .xl\:h-auto {
@@ -39137,6 +39173,10 @@ body {
 
   .xl\:w-64 {
     width: 16rem;
+  }
+
+  .xl\:w-120 {
+    width: 30rem;
   }
 
   .xl\:w-auto {

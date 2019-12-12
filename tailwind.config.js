@@ -6,7 +6,13 @@ module.exports = {
     extend: {
       fontSize: {
         '7xl': '5rem',
-      }
+      },
+      width: {
+        '120': '30rem',
+      },
+      height: {
+        '120': '30rem',
+      },
     }
   },
   variants: {},

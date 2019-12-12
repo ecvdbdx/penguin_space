@@ -4,6 +4,7 @@ import React from 'react'
 import axios from 'axios'
 import PlanetsList from './components/PlanetsList'
 import PlanetView from './components/PlanetView'
+import SolarSystem from './components/SolarSystem'
 
 function isPlanet(planet) {
   const planetsIds = ['mercure', 'venus', 'terre', 'mars', 'jupiter', 'saturne', 'uranus', 'neptune', 'pluton']
@@ -40,15 +41,18 @@ class App extends React.Component {
       })
   }
 
-  renderPlanetView() {
-    return this.state.currentPlanetId && <PlanetView planet={this.currentPlanet()} />
+  renderView() {
+    if (!this.state.currentPlanetId) {
+      return <SolarSystem planets={this.state.planets} />
+    }
+    return <PlanetView planet={this.currentPlanet()} />
   }
 
   render() {
     return <div className="flex">
       <PlanetsList planets={this.state.planets}
-                   setCurrentPlanetId={this.setCurrentPlanetId} />
-      {this.renderPlanetView()}
+        setCurrentPlanetId={this.setCurrentPlanetId} />
+      {this.renderView()}
     </div>
   }
 }
