@@ -45,13 +45,14 @@ class App extends React.Component {
     if (!this.state.currentPlanetId) {
       return <SolarSystem planets={this.state.planets} />
     }
-    return <PlanetView planet={this.currentPlanet()} />
+    return <PlanetView planet={this.currentPlanet()}
+                       homepage={() => this.setCurrentPlanetId('')} />
   }
 
   render() {
     return <div className="flex">
       <PlanetsList planets={this.state.planets}
-        setCurrentPlanetId={this.setCurrentPlanetId} />
+                   setCurrentPlanetId={this.setCurrentPlanetId} />
       {this.renderView()}
     </div>
   }
