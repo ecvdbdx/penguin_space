@@ -51,11 +51,13 @@ class App extends React.Component {
   }
 
   render() {
-    return <div className="flex">
-      <PlanetsList planets={this.state.planets}
-                   setCurrentPlanetId={this.setCurrentPlanetId} />
-      {this.renderView()}
-    </div>
+    return (
+      <div className="flex">
+        <PlanetsList planets={this.state.planets}
+                     setCurrentPlanetId={this.setCurrentPlanetId} />
+        {this.renderView()}
+      </div>
+    )
   }
 }
 
