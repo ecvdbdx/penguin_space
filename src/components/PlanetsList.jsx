@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function PlanetsList(props) {
+function PlanetsList(props) {
   return (
     <div className="flex flex-col items-center justify-around flex-shrink-0 h-screen overflow-auto p-4">
       {props.planets.map((planet, index) => {
@@ -15,3 +15,5 @@ export default function PlanetsList(props) {
     </div>
   )
 }
+
+export default PlanetsList

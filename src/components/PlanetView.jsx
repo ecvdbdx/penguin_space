@@ -1,7 +1,7 @@
 import React from 'react'
 import { ChevronLeft } from 'react-feather'
 
-export default function PlanetView(props) {
+function PlanetView(props) {
   return (
     <div className="flex-grow pt-12 pl-16 pr-8">
       <button onClick={props.homepage}
@@ -54,3 +54,5 @@ export default function PlanetView(props) {
     </div>
   )
 }
+
+export default PlanetView
