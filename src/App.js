@@ -43,18 +43,29 @@ class App extends React.Component {
 
   renderView() {
     if (!this.state.currentPlanetId) {
-      return <HomeView planets={this.state.planets}
-                       setCurrentPlanetId={this.setCurrentPlanetId} />
+      return (
+        <HomeView
+          planets={this.state.planets}
+          setCurrentPlanetId={this.setCurrentPlanetId}
+        />
+      )
     }
-    return <PlanetView planet={this.currentPlanet()}
-                       homepage={() => this.setCurrentPlanetId('')} />
+    return (
+      <PlanetView
+        planet={this.currentPlanet()}
+        homepage={() => this.setCurrentPlanetId('')}
+      />
+    )
   }
 
   render() {
     return (
       <div className="flex">
-        <PlanetsList planets={this.state.planets}
-                     setCurrentPlanetId={this.setCurrentPlanetId} />
+        <PlanetsList
+          planets={this.state.planets}
+          setCurrentPlanetId={this.setCurrentPlanetId}
+        />
+
         {this.renderView()}
       </div>
     )

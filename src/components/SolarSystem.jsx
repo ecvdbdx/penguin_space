@@ -18,8 +18,10 @@ class SolarSystem extends React.Component {
 
   updatePlanetsAngles(interval) {
     this.props.planets.forEach(({ id, sideralOrbit }) => {
-      const sideralOrbitInMilliseconds = 360 * 8.64e+7 / sideralOrbit // orbital period in milliseconds
+      const sideralOrbitInMilliseconds = sideralOrbit * 8.64e+7 // orbital period in milliseconds
       const travelledDistanceInOneInterval = 360 * interval / sideralOrbitInMilliseconds
+
+      // console.log(id, sideralOrbitInMilliseconds)
 
       this.setState({
         [id]: this.state[id] + travelledDistanceInOneInterval
