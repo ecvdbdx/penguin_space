@@ -1,3 +1,22 @@
+/* Buttons */
+
+.btn {
+  @apply inline-block;
+  @apply px-2 py-1;
+  @apply text-sm font-medium;
+  @apply text-black bg-white;
+  @apply border border-white;
+  @apply rounded;
+
+  &:hover {
+    @apply text-white bg-black;
+  }
+
+  &:focus {
+    @apply outline-none;
+  }
+}
+
 .planet-preview-image {
   max-height: 32rem;
 }

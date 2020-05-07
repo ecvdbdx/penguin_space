@@ -18,6 +18,7 @@ class SolarSystem extends React.Component {
 
     this.getMaxSemimajorAxis = this.getMaxSemimajorAxis.bind(this)
     this.updatePlanetsAngles = this.updatePlanetsAngles.bind(this)
+    this.rotatePlanets = this.rotatePlanets.bind(this)
   }
 
   getMaxSemimajorAxis() {
@@ -35,15 +36,28 @@ class SolarSystem extends React.Component {
     })
   }
 
-  componentDidMount() {
-    // const interval = 10 // in milliseconds
-    // setInterval(() => this.updatePlanetsAngles(interval), interval)
+  rotatePlanets() {
+    this.setState({ rotating: !this.state.rotating })
+
+    if (!this.state.rotating) {
+      const interval = 10 // in milliseconds
+      this.refreshPlanetsAngles = setInterval(() => this.updatePlanetsAngles(interval), interval)
+    } else {
+      clearInterval(this.refreshPlanetsAngles)
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.refreshPlanetsAngles)
   }
 
   render() {
     return (
       <>
-        <button className="btn">Rotate planets</button>
+        <button className="btn"
+                onClick={this.rotatePlanets}>
+          Rotate planets
+        </button>
         <div className="w-160 h-160 relative flex-shrink-0">
           {this.props.planets.map((planet, index) => {
             const planetAngle = this.state[planet.id] || 0 // in degrees
