@@ -8,11 +8,19 @@ class SolarSystem extends React.Component {
       rotating: false
     }
 
-    this.maxSemimajorAxis = this.maxSemimajorAxis.bind(this)
+    // Initialise planets angles
+    this.props.planets.forEach(({ id }) => {
+      this.state = {
+        ...this.state,
+        [id]: 0
+      }
+    })
+
+    this.getMaxSemimajorAxis = this.getMaxSemimajorAxis.bind(this)
     this.updatePlanetsAngles = this.updatePlanetsAngles.bind(this)
   }
 
-  maxSemimajorAxis() {
+  getMaxSemimajorAxis() {
     return Math.max(...this.props.planets.map(planet => planet.semimajorAxis))
   }
 
@@ -21,62 +29,57 @@ class SolarSystem extends React.Component {
       const sideralOrbitInMilliseconds = sideralOrbit * 8.64e+7 // orbital period in milliseconds
       const travelledDistanceInOneInterval = 360 * interval / sideralOrbitInMilliseconds
 
-      // console.log(id, sideralOrbitInMilliseconds)
-
       this.setState({
-        [id]: this.state[id] + travelledDistanceInOneInterval
+        [id]: this.state[id] + travelledDistanceInOneInterval * 10000000
       })
     })
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (!this.state.rotating && this.props.planets.length > 0) {
-      this.setState({ rotating: true })
-
-      // Initialise planets angles
-      this.props.planets.forEach(({ id }) => {
-        this.setState({
-          [id]: 0
-        })
-      })
-
-      const interval = 1 // in milliseconds
-      setInterval(() => this.updatePlanetsAngles(interval), interval)
-    }
+  componentDidMount() {
+    // const interval = 10 // in milliseconds
+    // setInterval(() => this.updatePlanetsAngles(interval), interval)
   }
 
   render() {
     return (
-      <div className="w-160 h-160 relative flex-shrink-0">
-        {this.props.planets.map((planet, index) => {
-          const planetAngle = this.state[planet.id] // in degrees
+      <>
+        <button className="btn">Rotate planets</button>
+        <div className="w-160 h-160 relative flex-shrink-0">
+          {this.props.planets.map((planet, index) => {
+            const planetAngle = this.state[planet.id] || 0 // in degrees
 
-          const planetOrbitDistance = 50 * planet.semimajorAxis / this.maxSemimajorAxis()
+            let planetOrbitDistance = 50 * Math.log(planet.semimajorAxis) / Math.log(this.getMaxSemimajorAxis())
+            planetOrbitDistance = planetOrbitDistance - Math.log(this.getMaxSemimajorAxis()) / Math.log(planet.semimajorAxis)
 
-          return (
-            <>
-              <div key={index}
-                   className="absolute border border-solid border-white rounded-full z-0"
-                   style={{
-                     width: `${planetOrbitDistance * 2}%`,
-                     height: `${planetOrbitDistance * 2}%`,
-                     top: "50%",
-                     left: "50%",
-                     transform: "translate(-50%, -50%)"
-                   }} />
-              <img src={`img/${planet.englishName.toLowerCase()}.png`}
-                   onClick={() => this.props.setCurrentPlanetId(planet.id)}
-                   className="absolute h-8 cursor-pointer z-10"
-                   style={{
-                     top: `${50 - planetOrbitDistance * Math.sin(planetAngle * (Math.PI / 180))}%`,
-                     left: `${50 + planetOrbitDistance * Math.cos(planetAngle * (Math.PI / 180))}%`,
-                     transform: "translate(-50%, -50%)"
-                   }}
-                   alt={planet.englishName} />
-            </>
-          )
-        })}
-      </div>
+            return (
+              <>
+                <div
+                  key={index}
+                  className="absolute border border-solid border-white rounded-full z-0"
+                  style={{
+                    width: `${planetOrbitDistance * 2}%`,
+                    height: `${planetOrbitDistance * 2}%`,
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)"
+                  }}
+                />
+                <img
+                  alt={planet.englishName}
+                  className="absolute h-6 cursor-pointer z-10"
+                  src={`img/${planet.englishName.toLowerCase()}.png`}
+                  style={{
+                    top: `${50 - planetOrbitDistance * Math.sin(planetAngle * (Math.PI / 180))}%`,
+                    left: `${50 + planetOrbitDistance * Math.cos(planetAngle * (Math.PI / 180))}%`,
+                    transform: "translate(-50%, -50%)"
+                  }}
+                  onClick={() => this.props.setCurrentPlanetId(planet.id)}
+                />
+              </>
+            )
+          })}
+        </div>
+      </>
     )
   }
 }
