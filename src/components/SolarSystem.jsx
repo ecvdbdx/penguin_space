@@ -6,14 +6,16 @@ class SolarSystem extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      rotating: false
-    }
-
     // Initialise planets angles
+    let planetsAngles = {}
     this.props.planets.forEach(({ id }) => {
-      this.state[id] = 0
+      planetsAngles[id] = 0
     })
+
+    this.state = {
+      rotating: false,
+      planetsAngles: planetsAngles
+    }
 
     this.getMaxSemimajorAxis = this.getMaxSemimajorAxis.bind(this)
     this.updatePlanetsAngles = this.updatePlanetsAngles.bind(this)
@@ -25,13 +27,16 @@ class SolarSystem extends React.Component {
   }
 
   updatePlanetsAngles(interval) {
+    let planetsAngles = {}
     this.props.planets.forEach(({ id, sideralOrbit }) => {
       const sideralOrbitInMilliseconds = sideralOrbit * 8.64e+7 // orbital period in milliseconds
       const travelledDistanceInOneInterval = 360 * interval / sideralOrbitInMilliseconds
 
-      this.setState({
-        [id]: this.state[id] + travelledDistanceInOneInterval * SPEED
-      })
+      planetsAngles[id] = this.state.planetsAngles[id] + travelledDistanceInOneInterval * SPEED
+    })
+
+    this.setState({
+      planetsAngles: planetsAngles
     })
   }
 
@@ -62,7 +67,7 @@ class SolarSystem extends React.Component {
 
         <div className="relative flex-shrink-0 h-0 pb-full">
           {this.props.planets.map((planet, index) => {
-            const planetAngle = this.state[planet.id] || 0 // in degrees
+            const planetAngle = this.state.planetsAngles[planet.id] || 0 // in degrees
 
             let planetOrbitDistance = 50 * planet.semimajorAxis / this.getMaxSemimajorAxis()
             // planetOrbitDistance = planetOrbitDistance - this.getMaxSemimajorAxis() / planet.semimajorAxis
@@ -81,6 +86,7 @@ class SolarSystem extends React.Component {
                   }}
                 />
                 <img
+                  key={`i${index}`}
                   alt={planet.englishName}
                   className="absolute h-6 cursor-pointer z-10"
                   src={`img/${planet.englishName.toLowerCase()}.png`}
