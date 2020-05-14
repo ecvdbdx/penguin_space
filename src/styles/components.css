@@ -2,7 +2,7 @@
 
 .btn {
   @apply inline-block;
-  @apply py-1 px-3;
+  @apply py-2 px-4;
   @apply text-sm font-medium;
   @apply text-black bg-white;
   @apply border border-white;
