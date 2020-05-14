@@ -1,11 +1,11 @@
 import React from 'react'
-import SolarSystem from './SolarSystem'
+import SolarSystem from '../components/SolarSystem'
 
 function HomeView(props) {
   return (
     <div className="flex-grow pt-12 pl-16 pr-8">
       <div>
-        <div>
+        <div className="mb-16">
           <h2 className="font-semibold text-7xl tracking-tighter leading-none mb-8">
             Solar<br />System
           </h2>

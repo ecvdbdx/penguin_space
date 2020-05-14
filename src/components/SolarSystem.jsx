@@ -58,7 +58,7 @@ class SolarSystem extends React.Component {
           Toggle rotation
         </button>
 
-        <div className="solar-system relative flex-shrink-0">
+        <div className="relative flex-shrink-0 h-0 pb-full">
           {this.props.planets.map((planet, index) => {
             const planetAngle = this.state[planet.id] || 0 // in degrees
 

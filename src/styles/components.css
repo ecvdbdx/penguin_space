@@ -2,24 +2,21 @@
 
 .btn {
   @apply inline-block;
-  @apply px-2 py-1;
+  @apply py-1 px-3;
   @apply text-sm font-medium;
   @apply text-black bg-white;
   @apply border border-white;
-  @apply rounded;
+  @apply rounded-full;
 
   &:hover {
-    @apply text-white bg-black;
+    @apply bg-gray-400;
+    @apply border-gray-400;
   }
 
   &:focus {
+    box-shadow: 0 0 0 2px theme('colors.blue.600');
     @apply outline-none;
   }
-}
-
-.solar-system {
-  height: 0;
-  padding-bottom: 100%;
 }
 
 .planet-preview-image {

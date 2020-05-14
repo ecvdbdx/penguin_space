@@ -1,10 +1,11 @@
-import './app.css'
-
 import React from 'react'
 import axios from 'axios'
+
+import './app.css'
+
+import HomeView from './views/HomeView'
+import PlanetView from './views/PlanetView'
 import PlanetsList from './components/PlanetsList'
-import PlanetView from './components/PlanetView'
-import HomeView from './components/HomeView'
 
 function isPlanet(planet) {
   const planetsIds = ['mercure', 'venus', 'terre', 'mars', 'jupiter', 'saturne', 'uranus', 'neptune', 'pluton']

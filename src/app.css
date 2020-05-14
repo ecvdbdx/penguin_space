@@ -583,7 +583,7 @@ body {
   --text-opacity: 1;
   color: #fff;
   color: rgba(255, 255, 255, var(--text-opacity));
-  background: linear-gradient(to top, #141b2f, #000);
+  background: linear-gradient(to top, #0e101e, #000);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -620,10 +620,10 @@ body {
 
 .btn {
   display: inline-block;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   font-size: 0.875rem;
   font-weight: 500;
   --text-opacity: 1;
@@ -636,26 +636,22 @@ body {
   --border-opacity: 1;
   border-color: #fff;
   border-color: rgba(255, 255, 255, var(--border-opacity));
-  border-radius: 0.25rem;
+  border-radius: 9999px;
 }
 
 .btn:hover {
-    --text-opacity: 1;
-    color: #fff;
-    color: rgba(255, 255, 255, var(--text-opacity));
     --bg-opacity: 1;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, var(--bg-opacity));
+    background-color: #cbd5e0;
+    background-color: rgba(203, 213, 224, var(--bg-opacity));
+    --border-opacity: 1;
+    border-color: #cbd5e0;
+    border-color: rgba(203, 213, 224, var(--border-opacity));
   }
 
 .btn:focus {
+    box-shadow: 0 0 0 2px #3182ce;
     outline: 0;
   }
-
-.solar-system {
-  height: 0;
-  padding-bottom: 100%;
-}
 
 .planet-preview-image {
   max-height: 32rem;
@@ -7911,6 +7907,10 @@ body {
   padding: 1px;
 }
 
+.p-full {
+  padding: 100%;
+}
+
 .py-0 {
   padding-top: 0;
   padding-bottom: 0;
@@ -8099,6 +8099,16 @@ body {
 .px-px {
   padding-left: 1px;
   padding-right: 1px;
+}
+
+.py-full {
+  padding-top: 100%;
+  padding-bottom: 100%;
+}
+
+.px-full {
+  padding-left: 100%;
+  padding-right: 100%;
 }
 
 .pt-0 {
@@ -8403,6 +8413,22 @@ body {
 
 .pl-px {
   padding-left: 1px;
+}
+
+.pt-full {
+  padding-top: 100%;
+}
+
+.pr-full {
+  padding-right: 100%;
+}
+
+.pb-full {
+  padding-bottom: 100%;
+}
+
+.pl-full {
+  padding-left: 100%;
 }
 
 .placeholder-transparent::placeholder {
@@ -21718,6 +21744,10 @@ body {
     padding: 1px;
   }
 
+  .sm\:p-full {
+    padding: 100%;
+  }
+
   .sm\:py-0 {
     padding-top: 0;
     padding-bottom: 0;
@@ -21906,6 +21936,16 @@ body {
   .sm\:px-px {
     padding-left: 1px;
     padding-right: 1px;
+  }
+
+  .sm\:py-full {
+    padding-top: 100%;
+    padding-bottom: 100%;
+  }
+
+  .sm\:px-full {
+    padding-left: 100%;
+    padding-right: 100%;
   }
 
   .sm\:pt-0 {
@@ -22210,6 +22250,22 @@ body {
 
   .sm\:pl-px {
     padding-left: 1px;
+  }
+
+  .sm\:pt-full {
+    padding-top: 100%;
+  }
+
+  .sm\:pr-full {
+    padding-right: 100%;
+  }
+
+  .sm\:pb-full {
+    padding-bottom: 100%;
+  }
+
+  .sm\:pl-full {
+    padding-left: 100%;
   }
 
   .sm\:placeholder-transparent::placeholder {
@@ -35526,6 +35582,10 @@ body {
     padding: 1px;
   }
 
+  .md\:p-full {
+    padding: 100%;
+  }
+
   .md\:py-0 {
     padding-top: 0;
     padding-bottom: 0;
@@ -35714,6 +35774,16 @@ body {
   .md\:px-px {
     padding-left: 1px;
     padding-right: 1px;
+  }
+
+  .md\:py-full {
+    padding-top: 100%;
+    padding-bottom: 100%;
+  }
+
+  .md\:px-full {
+    padding-left: 100%;
+    padding-right: 100%;
   }
 
   .md\:pt-0 {
@@ -36018,6 +36088,22 @@ body {
 
   .md\:pl-px {
     padding-left: 1px;
+  }
+
+  .md\:pt-full {
+    padding-top: 100%;
+  }
+
+  .md\:pr-full {
+    padding-right: 100%;
+  }
+
+  .md\:pb-full {
+    padding-bottom: 100%;
+  }
+
+  .md\:pl-full {
+    padding-left: 100%;
   }
 
   .md\:placeholder-transparent::placeholder {
@@ -49334,6 +49420,10 @@ body {
     padding: 1px;
   }
 
+  .lg\:p-full {
+    padding: 100%;
+  }
+
   .lg\:py-0 {
     padding-top: 0;
     padding-bottom: 0;
@@ -49522,6 +49612,16 @@ body {
   .lg\:px-px {
     padding-left: 1px;
     padding-right: 1px;
+  }
+
+  .lg\:py-full {
+    padding-top: 100%;
+    padding-bottom: 100%;
+  }
+
+  .lg\:px-full {
+    padding-left: 100%;
+    padding-right: 100%;
   }
 
   .lg\:pt-0 {
@@ -49826,6 +49926,22 @@ body {
 
   .lg\:pl-px {
     padding-left: 1px;
+  }
+
+  .lg\:pt-full {
+    padding-top: 100%;
+  }
+
+  .lg\:pr-full {
+    padding-right: 100%;
+  }
+
+  .lg\:pb-full {
+    padding-bottom: 100%;
+  }
+
+  .lg\:pl-full {
+    padding-left: 100%;
   }
 
   .lg\:placeholder-transparent::placeholder {
@@ -63142,6 +63258,10 @@ body {
     padding: 1px;
   }
 
+  .xl\:p-full {
+    padding: 100%;
+  }
+
   .xl\:py-0 {
     padding-top: 0;
     padding-bottom: 0;
@@ -63330,6 +63450,16 @@ body {
   .xl\:px-px {
     padding-left: 1px;
     padding-right: 1px;
+  }
+
+  .xl\:py-full {
+    padding-top: 100%;
+    padding-bottom: 100%;
+  }
+
+  .xl\:px-full {
+    padding-left: 100%;
+    padding-right: 100%;
   }
 
   .xl\:pt-0 {
@@ -63634,6 +63764,22 @@ body {
 
   .xl\:pl-px {
     padding-left: 1px;
+  }
+
+  .xl\:pt-full {
+    padding-top: 100%;
+  }
+
+  .xl\:pr-full {
+    padding-right: 100%;
+  }
+
+  .xl\:pb-full {
+    padding-bottom: 100%;
+  }
+
+  .xl\:pl-full {
+    padding-left: 100%;
   }
 
   .xl\:placeholder-transparent::placeholder {
