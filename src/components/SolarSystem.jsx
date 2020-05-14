@@ -53,10 +53,12 @@ class SolarSystem extends React.Component {
   render() {
     return (
       <>
-        <button className="btn"
-                onClick={this.toggleRotation}>
-          Toggle rotation
-        </button>
+        <div className="sticky top-0 pt-8 -mt-8 z-20">
+          <button className="btn sticky"
+                  onClick={this.toggleRotation}>
+            Toggle rotation
+          </button>
+        </div>
 
         <div className="relative flex-shrink-0 h-0 pb-full">
           {this.props.planets.map((planet, index) => {
@@ -69,7 +71,7 @@ class SolarSystem extends React.Component {
               <>
                 <div
                   key={index}
-                  className="absolute border border-solid border-white rounded-full z-0 pointer-events-none	"
+                  className="absolute border border-solid border-white rounded-full z-0 pointer-events-none"
                   style={{
                     width: `${planetOrbitDistance * 2}%`,
                     height: `${planetOrbitDistance * 2}%`,
