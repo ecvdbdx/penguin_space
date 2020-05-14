@@ -1,6 +1,6 @@
 body {
   font-family: 'Inter', 'system-ui', sans-serif;
-  @apply text-white bg-black;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply text-white;
+  background: linear-gradient(to top, #141b2f, #000);
+  @apply antialiased;
 }

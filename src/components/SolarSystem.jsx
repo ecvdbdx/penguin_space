@@ -1,5 +1,7 @@
 import React from 'react'
 
+const SPEED = 10000000
+
 class SolarSystem extends React.Component {
   constructor(props) {
     super(props)
@@ -10,15 +12,12 @@ class SolarSystem extends React.Component {
 
     // Initialise planets angles
     this.props.planets.forEach(({ id }) => {
-      this.state = {
-        ...this.state,
-        [id]: 0
-      }
+      this.state[id] = 0
     })
 
     this.getMaxSemimajorAxis = this.getMaxSemimajorAxis.bind(this)
     this.updatePlanetsAngles = this.updatePlanetsAngles.bind(this)
-    this.rotatePlanets = this.rotatePlanets.bind(this)
+    this.toggleRotation = this.toggleRotation.bind(this)
   }
 
   getMaxSemimajorAxis() {
@@ -31,12 +30,12 @@ class SolarSystem extends React.Component {
       const travelledDistanceInOneInterval = 360 * interval / sideralOrbitInMilliseconds
 
       this.setState({
-        [id]: this.state[id] + travelledDistanceInOneInterval * 10000000
+        [id]: this.state[id] + travelledDistanceInOneInterval * SPEED
       })
     })
   }
 
-  rotatePlanets() {
+  toggleRotation() {
     this.setState({ rotating: !this.state.rotating })
 
     if (!this.state.rotating) {
@@ -55,21 +54,22 @@ class SolarSystem extends React.Component {
     return (
       <>
         <button className="btn"
-                onClick={this.rotatePlanets}>
-          Rotate planets
+                onClick={this.toggleRotation}>
+          Toggle rotation
         </button>
-        <div className="w-160 h-160 relative flex-shrink-0">
+
+        <div className="solar-system relative flex-shrink-0">
           {this.props.planets.map((planet, index) => {
             const planetAngle = this.state[planet.id] || 0 // in degrees
 
-            let planetOrbitDistance = 50 * Math.log(planet.semimajorAxis) / Math.log(this.getMaxSemimajorAxis())
-            planetOrbitDistance = planetOrbitDistance - Math.log(this.getMaxSemimajorAxis()) / Math.log(planet.semimajorAxis)
+            let planetOrbitDistance = 50 * planet.semimajorAxis / this.getMaxSemimajorAxis()
+            // planetOrbitDistance = planetOrbitDistance - this.getMaxSemimajorAxis() / planet.semimajorAxis
 
             return (
               <>
                 <div
                   key={index}
-                  className="absolute border border-solid border-white rounded-full z-0"
+                  className="absolute border border-solid border-white rounded-full z-0 pointer-events-none	"
                   style={{
                     width: `${planetOrbitDistance * 2}%`,
                     height: `${planetOrbitDistance * 2}%`,

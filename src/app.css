@@ -583,9 +583,7 @@ body {
   --text-opacity: 1;
   color: #fff;
   color: rgba(255, 255, 255, var(--text-opacity));
-  --bg-opacity: 1;
-  background-color: #000;
-  background-color: rgba(0, 0, 0, var(--bg-opacity));
+  background: linear-gradient(to top, #141b2f, #000);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -653,6 +651,11 @@ body {
 .btn:focus {
     outline: 0;
   }
+
+.solar-system {
+  height: 0;
+  padding-bottom: 100%;
+}
 
 .planet-preview-image {
   max-height: 32rem;

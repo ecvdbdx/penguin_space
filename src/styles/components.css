@@ -17,6 +17,11 @@
   }
 }
 
+.solar-system {
+  height: 0;
+  padding-bottom: 100%;
+}
+
 .planet-preview-image {
   max-height: 32rem;
 }
