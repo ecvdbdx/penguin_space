@@ -1,0 +1,6 @@
+body {
+  font-family: 'Inter', 'system-ui', sans-serif;
+  @apply text-white;
+  background: linear-gradient(to top, #0e101e, #000);
+  @apply antialiased;
+}

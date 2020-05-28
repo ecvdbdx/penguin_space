@@ -5,8 +5,8 @@
   "scripts": {
     "start": "npm run watch:css & react-scripts start",
     "build": "npm run build:css && react-scripts build",
-    "build:css": "postcss src/styles/main.css -o src/index.css",
-    "watch:css": "postcss --watch src/styles/main.css -o src/index.css",
+    "build:css": "postcss src/styles/main.css -o src/app.css",
+    "watch:css": "npm run build:css -- --watch",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -26,15 +26,15 @@
     ]
   },
   "dependencies": {
+    "autoprefixer": "^9.7.6",
     "axios": "^0.19.0",
+    "postcss-cli": "^6.1.3",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.7.0",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
-  },
-  "devDependencies": {
-    "postcss-cli": "^6.1.3",
-    "tailwindcss": "^1.1.4"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-feather": "^2.0.8",
+    "react-scripts": "^3.4.1",
+    "tailwindcss": "^1.4.5"
   }
 }

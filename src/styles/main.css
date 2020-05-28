@@ -1,13 +1,7 @@
-@tailwind base;
+@import "tailwindcss/base";
+@import "./base.css";
 
-body {
-  @apply font-body text-white bg-black;
-}
+@import "tailwindcss/components";
+@import "./components.css";
 
-@tailwind components;
-
-.planet-preview-image {
-  max-height: 32rem;
-}
-
-@tailwind utilities;
+@import "tailwindcss/utilities";
