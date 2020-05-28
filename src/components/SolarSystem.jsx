@@ -13,7 +13,7 @@ class SolarSystem extends React.Component {
     })
 
     this.state = {
-      rotating: false,
+      isRotating: false,
       planetsAngles: planetsAngles
     }
 
@@ -41,18 +41,18 @@ class SolarSystem extends React.Component {
   }
 
   toggleRotation() {
-    this.setState({ rotating: !this.state.rotating })
+    this.setState({ isRotating: !this.state.isRotating })
 
-    if (!this.state.rotating) {
+    if (!this.state.isRotating) {
       const interval = 10 // in milliseconds
-      this.refreshPlanetsAngles = setInterval(() => this.updatePlanetsAngles(interval), interval)
+      this.refreshPlanetsAnglesInterval = setInterval(() => this.updatePlanetsAngles(interval), interval)
     } else {
-      clearInterval(this.refreshPlanetsAngles)
+      clearInterval(this.refreshPlanetsAnglesInterval)
     }
   }
 
   componentWillUnmount() {
-    clearInterval(this.refreshPlanetsAngles)
+    clearInterval(this.refreshPlanetsAnglesInterval)
   }
 
   render() {
@@ -61,7 +61,7 @@ class SolarSystem extends React.Component {
         <div className="sticky top-0 pt-8 -mt-8 z-20">
           <button className="btn sticky"
                   onClick={this.toggleRotation}>
-            Toggle rotation
+            {this.state.isRotating ? 'Stop' : 'Start'} rotation
           </button>
         </div>
 
@@ -70,7 +70,6 @@ class SolarSystem extends React.Component {
             const planetAngle = this.state.planetsAngles[planet.id] || 0 // in degrees
 
             let planetOrbitDistance = 50 * planet.semimajorAxis / this.getMaxSemimajorAxis()
-            // planetOrbitDistance = planetOrbitDistance - this.getMaxSemimajorAxis() / planet.semimajorAxis
 
             return (
               <>

@@ -51,6 +51,7 @@ class App extends React.Component {
         />
       )
     }
+
     return (
       <PlanetView
         planet={this.currentPlanet()}
@@ -61,7 +62,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="flex">
+      <div className="flex overflow-hidden">
         <PlanetsList
           planets={this.state.planets}
           setCurrentPlanetId={this.setCurrentPlanetId}
