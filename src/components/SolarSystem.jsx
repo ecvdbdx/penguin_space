@@ -1,5 +1,6 @@
 import React from 'react'
 
+const DAYS_TO_MILLISECONDS_MULTIPLIER = 8.64e+7
 const SPEED = 10000000
 
 class SolarSystem extends React.Component {
@@ -29,30 +30,36 @@ class SolarSystem extends React.Component {
   updatePlanetsAngles(interval) {
     let planetsAngles = {}
     this.props.planets.forEach(({ id, sideralOrbit }) => {
-      const sideralOrbitInMilliseconds = sideralOrbit * 8.64e+7 // orbital period in milliseconds
+      const sideralOrbitInMilliseconds = sideralOrbit * DAYS_TO_MILLISECONDS_MULTIPLIER // orbital period in milliseconds
       const travelledDistanceInOneInterval = 360 * interval / sideralOrbitInMilliseconds
 
       planetsAngles[id] = this.state.planetsAngles[id] + travelledDistanceInOneInterval * SPEED
     })
 
     this.setState({
-      planetsAngles: planetsAngles
+      planetsAngles
     })
   }
 
   toggleRotation() {
-    this.setState({ isRotating: !this.state.isRotating })
-
-    if (!this.state.isRotating) {
-      const interval = 10 // in milliseconds
-      this.refreshPlanetsAnglesInterval = setInterval(() => this.updatePlanetsAngles(interval), interval)
-    } else {
-      clearInterval(this.refreshPlanetsAnglesInterval)
-    }
+    this.setState(state => ({
+      isRotating: !state.isRotating
+    }))
   }
 
   componentWillUnmount() {
     clearInterval(this.refreshPlanetsAnglesInterval)
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.state.isRotating !== prevState.isRotating) {
+      if (this.state.isRotating) {
+        const interval = 10 // in milliseconds
+        this.refreshPlanetsAnglesInterval = setInterval(() => this.updatePlanetsAngles(interval), interval)
+      } else {
+        clearInterval(this.refreshPlanetsAnglesInterval)
+      }
+    }
   }
 
   render() {
